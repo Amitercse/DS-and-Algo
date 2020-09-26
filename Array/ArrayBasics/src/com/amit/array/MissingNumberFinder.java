@@ -1,4 +1,4 @@
-package com.amit.arrayReversal;
+package com.amit.array;
 
 import java.util.HashSet;
 import java.util.Set;

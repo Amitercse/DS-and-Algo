@@ -1,4 +1,4 @@
-package com.amit.arrayReversal;
+package com.amit.array;
 
 /**
  * @author amit
