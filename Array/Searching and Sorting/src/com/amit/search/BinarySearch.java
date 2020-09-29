@@ -26,6 +26,12 @@ public class BinarySearch {
 			return true;
 		}
 		while (start <= end) {
+			/*
+			 * Don't calculate mid like below-
+			 * mid= (start+end)/2;
+			 * Because for large number of array, start+end may results in integer
+			 * overflow issue.
+			 */
 			int mid = start + (end - start) / 2;
 			if (element == arr[mid]) {
 				elementFound = true;
