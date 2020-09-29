@@ -17,10 +17,13 @@ public class ArrayReversal {
 	 */
 	public void reverseArray(int[] arr) {
 		int last = arr.length - 1;
-		for (int i = 0; i < last; i++, last--) {
-			arr[i] = arr[i] + arr[last];
-			arr[last] = arr[i] - arr[last];
-			arr[i] = arr[i] - arr[last];
+		int start = 0;
+		while (start < last) {
+			arr[start] = arr[start] + arr[last];
+			arr[last] = arr[start] - arr[last];
+			arr[start] = arr[start] - arr[last];
+			start++;
+			last--;
 		}
 	}
 	
@@ -59,10 +62,12 @@ public class ArrayReversal {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int[] arr = { 1, 2, 3, 4, 5, 6, 7 };
+		int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8 };
 		ArrayReversal arrayReversal = new ArrayReversal();
+		System.out.println("Reversing using loop");
 		arrayReversal.reverseArray(arr);
 		arrayReversal.printArray(arr);
+		System.out.println("Reversing using recursion");
 		arrayReversal.reverseArrUsingRecursion(arr, 0, arr.length - 1);
 		arrayReversal.printArray(arr);
 	}
