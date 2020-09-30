@@ -8,6 +8,15 @@ import java.util.Set;
  * Class to find union of two arrays. Union array will have all
  * data of first and second array but not repeated one.
  * Assuming that an array doesn't have duplicate records. 
+ * Demonstrating below two approaches here-
+ * 1) brute force approach.
+ * 2) Using hashing.
+ * Apart from that below are few more approaches that can be tried.
+ * 1) Sort the arrays and find union of two arrays. Sorting needs O(mlogm + nlogn)
+ * time complexity and then union of arrays can be found in O(m+n) complexity.
+ * 2) Modify brute force approach a little. Find smaller array between two and sort that array.
+ * Copy sorted array to union array and then iterate over larger array. For each element in 
+ * larger array, search in sorted array if present. If not present then add in union. 
  */
 public class ArrayUnion {
 
