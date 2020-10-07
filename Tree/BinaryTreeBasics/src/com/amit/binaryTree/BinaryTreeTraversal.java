@@ -40,4 +40,19 @@ public class BinaryTreeTraversal {
 			}
 		}
 	}
+	
+	/**
+	 * Pre-order traversal over tree using recursion. Runtime complexity will be O(n).
+	 * It doesn't need extra space to store data but for recursion it needs to store
+	 * function calls in stack.
+	 * @author amit
+	 * @param root
+	 */
+	public void preOrderTraversalUsingRecursion(BinaryTreeNode root) {
+		if (root != null) {
+			System.out.println(root.getData());
+			preOrderTraversalUsingRecursion(root.getLeft());
+			preOrderTraversalUsingRecursion(root.getRight());
+		}
+	}
 }

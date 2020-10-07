@@ -47,13 +47,4 @@ public class BinaryTreeCreation {
 		}
 		return root;
 	}
-	
-	public static void main(String[] args) {
-		int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 2, 11 };
-		BinaryTreeCreation binaryTreeCreation = new BinaryTreeCreation();
-		BinaryTreeNode root = binaryTreeCreation.createBinaryTree(array);
-		System.out.println(root.getData());
-		BinaryTreeTraversal binaryTreeTraversal = new BinaryTreeTraversal();
-		binaryTreeTraversal.traverseTree(root);
-	}
 }
