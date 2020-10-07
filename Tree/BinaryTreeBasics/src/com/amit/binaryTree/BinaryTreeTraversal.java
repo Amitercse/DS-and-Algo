@@ -14,6 +14,10 @@ public class BinaryTreeTraversal {
 	/**
 	 * It is simple traversal of tree like traversal for BFS. It needs O(n) time
 	 * complexity as we are looking for each element and O(n) space complexity for queue.
+	 * Algorithms steps-
+	 * * Insert root in queue and repeat below steps until queue is empty
+	 * * Remove element from queue, print its data and insert its left
+	 * * right children and queue.
 	 * @param root
 	 */
 	public void traverseTree(BinaryTreeNode root) {
@@ -54,6 +58,11 @@ public class BinaryTreeTraversal {
 	/**
 	 * Pre order traversal using iteration. It needs O(n) runtime complexity
 	 * to visit each node. Also it takes space O(n) for stack. 
+	 * Algorithm steps-
+	 * * Push root in the stack.
+	 * * Pop node from stack and read its data. Also keep pushing
+	 * * in stack its right and left children in reverse order. 
+	 * * First right child then left child. 
 	 * @author amit
 	 * @param root
 	 */
@@ -69,6 +78,56 @@ public class BinaryTreeTraversal {
 				}
 				if (node.getLeft() != null) {
 					stack.push(node.getLeft());
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Inorder traversal using recursion. It will take O(n) runtime complexity 
+	 * to visit each node. No extra space needed to store data but internally
+	 * recursion needs stack to maintain function call.
+	 * @author amit
+	 * @param root
+	 */
+	public void inorderTraversalUsingRecursion(BinaryTreeNode root) {
+		if (root != null) {
+			inorderTraversalUsingRecursion(root.getLeft());
+			System.out.print(root.getData() + "\t");
+			inorderTraversalUsingRecursion(root.getRight());
+		}
+	}
+	
+	/**
+	 * Inorder traversal using iteration. Needs O(n) complexity to visit each
+	 * node. Also needs O(n) extra space for stack.
+	 * Algorithm steps-
+	 * * From root keep pushing each left node in the stack until get null.
+	 * * If found null then pop element from stack and read its data.
+	 * * Also make right node of poppped node as current node to perform
+	 * * same step.
+	 * @author amit
+	 * @param root
+	 */
+	public void inorderTraversalUsingIteration(BinaryTreeNode root) {
+		if (root != null) {
+			Stack<BinaryTreeNode> stack = new Stack<BinaryTreeNode>();
+			stack.push(root);
+			BinaryTreeNode currentNode = root.getLeft();
+			/* Only checking if stack is empty will not work here. Because
+			 * after visiting all left nodes we trace back to root, stack
+			 * will become empty but still right nodes of stacks are pending
+			 * to visit. So check if stack is empty as well as current Node 
+			 * is null.
+			 */
+			while (!(stack.isEmpty() && currentNode == null)) {
+				if (currentNode != null) {
+					stack.push(currentNode);
+					currentNode = currentNode.getLeft();
+				} else {
+					currentNode = stack.pop();
+					System.out.print(currentNode.getData() + "\t");
+					currentNode = currentNode.getRight();
 				}
 			}
 		}

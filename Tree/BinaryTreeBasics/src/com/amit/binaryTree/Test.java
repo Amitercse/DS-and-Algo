@@ -18,5 +18,9 @@ public class Test {
 		binaryTreeTraversal.preOrderTraversalUsingRecursion(root);
 		System.out.println("\nPre order traverse using iteration");
 		binaryTreeTraversal.preorderTraversalUsingIteration(root);
+		System.out.println("\nInorder traversal using recursion");
+		binaryTreeTraversal.inorderTraversalUsingRecursion(root);
+		System.out.println("\nInorder traversal using iteration");
+		binaryTreeTraversal.inorderTraversalUsingIteration(root);
 	}
 }

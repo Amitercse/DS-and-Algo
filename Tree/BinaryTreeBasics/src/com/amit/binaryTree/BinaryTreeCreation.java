@@ -18,6 +18,13 @@ public class BinaryTreeCreation {
 	 * Using array as input to create binary tree.
 	 * It needs time complexity O(n) to traverse the array and
 	 * space complexity of O(n) for queue.
+	 * Algorithm steps-
+	 * * Create root of tree using first element of array.
+	 * * Maintain a current node and initialize it with root.
+	 * * Read element from array, create a node with data and push it to queue.
+	 * * Make new node as a child(left or right) of current node. If current node
+	 * * has both left and right children assigned then pop node from queue to
+	 * * make it as current node and assign new node as child of this node. 
 	 * @author amit
 	 * @param inputArr
 	 * @return
