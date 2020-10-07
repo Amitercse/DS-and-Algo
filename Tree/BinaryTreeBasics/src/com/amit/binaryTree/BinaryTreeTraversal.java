@@ -2,6 +2,7 @@ package com.amit.binaryTree;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * @author amit
@@ -50,9 +51,38 @@ public class BinaryTreeTraversal {
 	 */
 	public void preOrderTraversalUsingRecursion(BinaryTreeNode root) {
 		if (root != null) {
-			System.out.println(root.getData());
+			System.out.print(root.getData() + "\t");
 			preOrderTraversalUsingRecursion(root.getLeft());
 			preOrderTraversalUsingRecursion(root.getRight());
+		}
+	}
+	
+	/**
+	 * Pre order traversal using iteration. It needs O(n) runtime complexity
+	 * to visit each node. Also it takes space O(n) for stack. 
+	 * @author amit
+	 * @param root
+	 */
+	public void preorderTraversalUsingIteration(BinaryTreeNode root) {
+		if (root != null) {
+			System.out.print(root.getData() + "\t");
+			Stack<BinaryTreeNode> stack = new Stack<BinaryTreeNode>();
+			if (root.getRight() != null) {
+				stack.push(root.getRight());
+			}
+			if (root.getLeft() != null) {
+				stack.push(root.getLeft());
+			}
+			while (!stack.isEmpty()) {
+				BinaryTreeNode node = stack.pop();
+				System.out.print(node.getData() + "\t");
+				if (node.getRight() != null) {
+					stack.push(node.getRight());
+				}
+				if (node.getLeft() != null) {
+					stack.push(node.getLeft());
+				}
+			}
 		}
 	}
 }
