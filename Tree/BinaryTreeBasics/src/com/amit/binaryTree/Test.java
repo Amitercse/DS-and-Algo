@@ -13,7 +13,6 @@ public class Test {
 		BinaryTreeNode root = binaryTreeCreation.createBinaryTree(array);
 		BinaryTreeTraversal binaryTreeTraversal = new BinaryTreeTraversal();
 		System.out.println("BFS traversal over tree");
-		// Traverse over binary tree
 		binaryTreeTraversal.traverseTree(root);
 		System.out.println("\nPre order traverse using recursion");
 		binaryTreeTraversal.preOrderTraversalUsingRecursion(root);

@@ -20,14 +20,8 @@ public class BinaryTreeTraversal {
 		if (root == null) {
 			System.out.println("Tree is empty");
 		} else {
-			System.out.print(root.getData() + "\t");
 			Queue<BinaryTreeNode> queue = new LinkedList<BinaryTreeNode>();
-			if (root.getLeft() != null) {
-				queue.offer(root.getLeft());
-			}
-			if (root.getRight() != null) {
-				queue.offer(root.getRight());
-			}
+			queue.offer(root);
 			BinaryTreeNode currentNode;
 			while (!queue.isEmpty()) {
 				currentNode = queue.poll();
@@ -65,14 +59,8 @@ public class BinaryTreeTraversal {
 	 */
 	public void preorderTraversalUsingIteration(BinaryTreeNode root) {
 		if (root != null) {
-			System.out.print(root.getData() + "\t");
 			Stack<BinaryTreeNode> stack = new Stack<BinaryTreeNode>();
-			if (root.getRight() != null) {
-				stack.push(root.getRight());
-			}
-			if (root.getLeft() != null) {
-				stack.push(root.getLeft());
-			}
+			stack.push(root);
 			while (!stack.isEmpty()) {
 				BinaryTreeNode node = stack.pop();
 				System.out.print(node.getData() + "\t");
