@@ -148,4 +148,38 @@ public class BinaryTreeTraversal {
 			System.out.print(root.getData()+"\t");
 		}
 	}
+	
+	/**
+	 * It will take O(n) as time complexity and O(n) space for stack.
+	 * Algorithm steps-
+	 * * For each node visit left subtree and keep pushing in stack.
+	 * * After pushing left subtree in stack push right subtree.
+	 * * Since here we are visiting each node twice so keeping previous 
+	 * * node also to check if visiting from left or right subtree.
+	 * @author amit
+	 * @param root
+	 */
+	public void postOrderTraversalUsingIteration(BinaryTreeNode root) {
+		if (root != null) {
+			Stack<BinaryTreeNode> stack = new Stack<BinaryTreeNode>();
+			stack.push(root);
+			BinaryTreeNode previous = null;
+			while (!stack.isEmpty()) {
+				BinaryTreeNode curr = stack.peek();
+				if (previous == null || curr == previous.getLeft() || curr == previous.getRight()) {
+					if (curr.getLeft() != null) {
+						stack.push(curr.getLeft());
+					} else if (curr.getRight() != null) {
+						stack.push(curr.getRight());
+					}
+				} else if (curr.getLeft() == previous && curr.getRight() != null) {
+					stack.push(curr.getRight());
+				} else {
+					System.out.print(curr.getData() + "\t");
+					stack.pop();
+				}
+				previous = curr;
+			}
+		}
+	}
 }

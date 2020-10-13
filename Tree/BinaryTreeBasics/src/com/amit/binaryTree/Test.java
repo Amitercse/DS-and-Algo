@@ -7,8 +7,7 @@ package com.amit.binaryTree;
 public class Test {
 
 	public static void main(String[] args) {
-	//	int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 2, 11 };
-		int[] array = { 1, 2, 3, 4, 5, 6, 7 };
+		int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 2, 11 };
 		BinaryTreeCreation binaryTreeCreation = new BinaryTreeCreation();
 		// Create binary tree using array
 		BinaryTreeNode root = binaryTreeCreation.createBinaryTree(array);
@@ -25,6 +24,7 @@ public class Test {
 		binaryTreeTraversal.inorderTraversalUsingIteration(root);
 		System.out.println("\nPostorder traversal using recursion");
 		binaryTreeTraversal.postOrderTraversalUsingRecursion(root);
-		
+		System.out.println("\nPostorder traversal using iteration");
+		binaryTreeTraversal.postOrderTraversalUsingIteration(root);
 	}
 }
