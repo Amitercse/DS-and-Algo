@@ -12,15 +12,16 @@ import java.util.Stack;
 public class BinaryTreeTraversal {
 
 	/**
-	 * It is simple traversal of tree like traversal for BFS. It needs O(n) time
-	 * complexity as we are looking for each element and O(n) space complexity for queue.
+	 * It is simple traversal of tree where each level will be traversed first. 
+	 * It needs O(n) time complexity as we are looking for each element and O(n) 
+	 * space complexity for queue.
 	 * Algorithms steps-
 	 * * Insert root in queue and repeat below steps until queue is empty
 	 * * Remove element from queue, print its data and insert its left
 	 * * right children and queue.
 	 * @param root
 	 */
-	public void traverseTree(BinaryTreeNode root) {
+	public void levelOrderTraversal(BinaryTreeNode root) {
 		if (root == null) {
 			System.out.println("Tree is empty");
 		} else {
@@ -130,6 +131,21 @@ public class BinaryTreeTraversal {
 					currentNode = currentNode.getRight();
 				}
 			}
+		}
+	}
+	
+	/**
+	 * Post order traversal using recursion. It will take O(n) runtime complexity 
+	 * to visit each node. No extra space needed to store data but internally
+	 * recursion needs stack to maintain function call.
+	 * @author amit
+	 * @param root
+	 */
+	public void postOrderTraversalUsingRecursion(BinaryTreeNode root) {
+		if (root != null) {
+			postOrderTraversalUsingRecursion(root.getLeft());
+			postOrderTraversalUsingRecursion(root.getRight());
+			System.out.print(root.getData()+"\t");
 		}
 	}
 }
