@@ -55,6 +55,7 @@ public class BinarySearchTree {
 	public boolean searchItem(int data) {
 		boolean isFound = false;
 		BinaryTreeNode currentNode = root;
+		// If root is null then also it will be handled using below condition.
 		while (currentNode != null) {
 			if (currentNode.getData() == data) {
 				isFound = true;
