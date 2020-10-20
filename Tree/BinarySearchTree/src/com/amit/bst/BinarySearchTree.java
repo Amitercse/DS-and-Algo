@@ -47,7 +47,29 @@ public class BinarySearchTree {
 	}
 	
 	/**
-	 * 
+	 * Search an item in binary search tree.
+	 * @author amit
+	 * @param data
+	 * @return
+	 */
+	public boolean searchItem(int data) {
+		boolean isFound = false;
+		BinaryTreeNode currentNode = root;
+		while (currentNode != null) {
+			if (currentNode.getData() == data) {
+				isFound = true;
+				break;
+			} else if (data < currentNode.getData()) {
+				currentNode = currentNode.getLeft();
+			} else {
+				currentNode = currentNode.getRight();
+			}
+		}
+		return isFound;
+	}
+	
+	/**
+	 * Level order traversal for binary search tree.
 	 * @author amit
 	 * @param root
 	 */
@@ -72,7 +94,7 @@ public class BinarySearchTree {
 	}
 	
 	public static void main(String[] args) {
-		BinarySearchTree bst= new BinarySearchTree();
+		BinarySearchTree bst = new BinarySearchTree();
 		bst.insert(4);
 		bst.insert(7);
 		bst.insert(6);
@@ -80,5 +102,7 @@ public class BinarySearchTree {
 		bst.insert(1);
 		bst.insert(4);
 		bst.traverseTree(bst.root);
+		boolean isFound = bst.searchItem(4);
+		System.out.println("\nelement found: " + isFound);
 	}
 }
