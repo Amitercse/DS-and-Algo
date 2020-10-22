@@ -69,6 +69,76 @@ public class BinarySearchTree {
 		return isFound;
 	}
 	
+	public void deleteNode(int data)
+	{
+		if(root== null)
+		{
+			System.out.println("Tree is emplty");
+		}
+		else
+		{
+			BinaryTreeNode parent= null;
+			BinaryTreeNode currentNode= root;
+			while(currentNode!= null && currentNode.getData()!= data)
+			{
+				parent= currentNode;
+				if(data<currentNode.getData())
+				{
+					currentNode= currentNode.getLeft();
+				}
+				else
+				{
+					currentNode= currentNode.getRight();
+				}
+			}
+			if(currentNode== null)
+			{
+				System.out.println("node not found");
+			}
+			else if(parent== null)
+			{
+				root= null;
+				System.out.println("deleted root");
+			}
+			else if(currentNode.getLeft()== null && currentNode.getRight()== null)
+			{
+				if(parent.getLeft()== currentNode)
+				{
+					parent.setLeft(null);
+				}
+				else
+				{
+					parent.setRight(null);
+				}
+			}
+			else if(currentNode.getLeft()== null || currentNode.getRight()== null)
+			{
+				BinaryTreeNode node= currentNode.getLeft()!= null?currentNode.getLeft():currentNode.getRight();
+				if(parent.getLeft()== currentNode)
+				{
+					parent.setLeft(node);
+				}
+				else
+				{
+					parent.setRight(node);
+				}
+			}
+			else
+			{
+				if(parent.getLeft()== currentNode)
+				{
+					parent.setLeft(currentNode.getRight());
+					parent.getLeft().setLeft(currentNode.getLeft());
+				}
+				else
+				{
+					parent.setRight(currentNode.getRight());
+					parent.getRight().setLeft(currentNode.getLeft());
+				}
+			}
+		}
+	}
+	
 	/**
 	 * Level order traversal for binary search tree.
 	 * @author amit
@@ -101,7 +171,7 @@ public class BinarySearchTree {
 		bst.insert(6);
 		bst.insert(3);
 		bst.insert(1);
-		bst.insert(4);
+		bst.insert(8);
 		bst.traverseTree(bst.root);
 		boolean isFound = bst.searchItem(4);
 		System.out.println("\nelement found: " + isFound);
