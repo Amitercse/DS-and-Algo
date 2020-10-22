@@ -125,15 +125,16 @@ public class BinarySearchTree {
 			}
 			else
 			{
+				BinaryTreeNode node= currentNode.getRight();
 				if(parent.getLeft()== currentNode)
 				{
-					parent.setLeft(currentNode.getRight());
-					parent.getLeft().setLeft(currentNode.getLeft());
+					parent.setLeft(node);
+					node.setLeft(currentNode.getLeft());
 				}
 				else
 				{
-					parent.setRight(currentNode.getRight());
-					parent.getRight().setLeft(currentNode.getLeft());
+					parent.setRight(node);
+					node.setLeft(currentNode.getLeft());
 				}
 			}
 		}
