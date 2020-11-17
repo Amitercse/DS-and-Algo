@@ -16,7 +16,7 @@ public class BinarySearchTree {
 	
 	/**
 	 * Insert data in binary search tree. Here not thinking about balancing the
-	 * tree.
+	 * tree. Just adding the data in available position.
 	 * @author amit
 	 * @param data
 	 */
