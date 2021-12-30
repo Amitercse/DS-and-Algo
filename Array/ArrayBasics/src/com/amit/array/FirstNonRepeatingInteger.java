@@ -19,11 +19,11 @@ public class FirstNonRepeatingInteger {
 				int occurrence = map.get(arr[i]) + 1;
 				map.put(arr[i], occurrence);
 			} else {
-				map.put(arr[i], 0);
+				map.put(arr[i], 1);
 			}
 		}
 		for (int i = 0; i < arr.length; i++) {
-			if (map.get(arr[i]) == 0) {
+			if (map.get(arr[i]) == 1) {
 				return arr[i];
 			}
 		}
