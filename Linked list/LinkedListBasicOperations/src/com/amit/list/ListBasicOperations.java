@@ -13,7 +13,11 @@ public class ListBasicOperations {
 		operations.displayElements();
 		boolean dataFound= operations.searchData(4);
 		System.out.println("data found: "+ dataFound);
-		
+	//	operations.addLoop();
+		boolean loopDetected= operations.detectLoop();
+		System.out.println("Loop detected: "+ loopDetected);
+		operations.reverseLinkedList();
+		operations.displayElements();
 	}
 	
 	/**
@@ -120,6 +124,66 @@ public class ListBasicOperations {
 				System.out.println("Node to be deleted not found");
 			}
 		}
+	}
+	
+	/**
+	 * Reverse a linked list
+	 */
+	private void reverseLinkedList() {
+		if (head == null) {
+			System.out.println("List is empty");
+			return;
+		}
+		if (head.getNext() == null) {
+			return;
+		}
+		Node previousNode = head;
+		Node currentNode = head.getNext();
+		previousNode.setNext(null);
+		while (currentNode != null && currentNode.getNext() != null) {
+			Node next = currentNode.getNext();
+			currentNode.setNext(previousNode);
+			previousNode= currentNode;
+			currentNode = next;
+		}
+		currentNode.setNext(previousNode);
+		head = currentNode;
+	}
+
+	/**
+	 * Detect loop in linked list
+	 * @return
+	 */
+	private boolean detectLoop() {
+		if (head == null) {
+			System.out.println("List is empty");
+		}
+		if (head.getNext() == null) {
+			return false;
+		}
+		Node slowPointer = head;
+		Node fastPointer = head;
+		while (fastPointer != null && fastPointer.getNext() != null) {
+			slowPointer = slowPointer.getNext();
+			fastPointer = fastPointer.getNext().getNext();
+			if (slowPointer == fastPointer) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Add a loop to the linked list
+	 */
+	private void addLoop()
+	{
+		Node currentNode= head;
+		while(currentNode!= null && currentNode.getNext()!= null)
+		{
+			currentNode= currentNode.getNext();
+		}
+		currentNode.setNext(head);
 	}
 
 	/**
