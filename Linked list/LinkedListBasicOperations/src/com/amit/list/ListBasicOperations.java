@@ -28,6 +28,7 @@ public class ListBasicOperations {
 		Node secondListHead= operations.buildLinkedList(newArr);
 	//	operations.findUnion(firstListHead, secondListHead);
 		operations.findIntersection(firstListHead, secondListHead);
+		operations.findNthFromLast(3);
 		operations.reverseLinkedList();
 		operations.displayElements(head);
 	}
@@ -328,6 +329,29 @@ public class ListBasicOperations {
 		displayElements(unionHead);
 	}
 
+	/**
+	 * Find nth element from last
+	 * @param n
+	 */
+	private void findNthFromLast(int n) {
+		if (head == null) {
+			System.out.println("list is empty");
+			return;
+		}
+		Node slowPtr = head;
+		Node fastPtr = head;
+		int counter = 1;
+		while (fastPtr != null) {
+			if (counter <= n) {
+				fastPtr = fastPtr.getNext();
+				counter++;
+			} else {
+				slowPtr = slowPtr.getNext();
+				fastPtr = fastPtr.getNext();
+			}
+		}
+		System.out.println("nth element from last: "+ slowPtr.getData());
+	}
 
 
 	/**
