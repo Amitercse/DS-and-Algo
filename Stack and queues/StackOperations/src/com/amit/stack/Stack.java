@@ -59,4 +59,12 @@ public class Stack {
 	{
 		return (top==-1);
 	}
+	
+	/**
+	 * Return length of underlying array of stack.
+	 * @return
+	 */
+	public int size() {
+		return arr.length;
+	}
 }
