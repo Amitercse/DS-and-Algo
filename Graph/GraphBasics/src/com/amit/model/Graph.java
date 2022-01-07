@@ -38,4 +38,32 @@ public class Graph {
 			}
 		}
 	}
+
+	/**
+	 * @return the vertices
+	 */
+	public int getVertices() {
+		return vertices;
+	}
+
+	/**
+	 * @param vertices the vertices to set
+	 */
+	public void setVertices(int vertices) {
+		this.vertices = vertices;
+	}
+
+	/**
+	 * @return the adjacencyList
+	 */
+	public DoublyLinkedList[] getAdjacencyList() {
+		return adjacencyList;
+	}
+
+	/**
+	 * @param adjacencyList the adjacencyList to set
+	 */
+	public void setAdjacencyList(DoublyLinkedList[] adjacencyList) {
+		this.adjacencyList = adjacencyList;
+	}
 }

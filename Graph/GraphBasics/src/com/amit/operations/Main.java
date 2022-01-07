@@ -13,5 +13,7 @@ public class Main {
 		graph.addEdge(2, 5);
 		graph.addEdge(5, 0);
 		graph.printGraph();
+		GraphTraversal traversal= new GraphTraversal();
+		traversal.traverseBFS(graph);
 	}
 }
