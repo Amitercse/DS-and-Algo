@@ -5,7 +5,7 @@ import com.amit.model.Graph;
 public class Main {
 
 	public static void main(String[] args) {
-		Graph graph= new Graph(6);
+		Graph graph = new Graph(6);
 		graph.addEdge(0, 1);
 		graph.addEdge(0, 2);
 		graph.addEdge(1, 3);
@@ -13,7 +13,8 @@ public class Main {
 		graph.addEdge(2, 5);
 		graph.addEdge(5, 0);
 		graph.printGraph();
-		GraphTraversal traversal= new GraphTraversal();
+		GraphTraversal traversal = new GraphTraversal();
 		traversal.traverseBFS(graph);
+		traversal.traverseDFS(graph);
 	}
 }
