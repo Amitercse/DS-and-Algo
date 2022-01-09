@@ -24,6 +24,17 @@ public class Graph {
 		adjacencyList[source].insertAtEnd(destination);
 	}
 	
+	public void addEdgeUndirected(int source, int destination)
+	{
+		if(source>=vertices || destination>= vertices)
+		{
+			System.out.println("source or destination is greated than allowed vertices");
+			return;
+		}		
+		adjacencyList[source].insertAtEnd(destination);
+		adjacencyList[destination].insertAtEnd(source);
+	}
+	
 	public void printGraph() {
 		System.out.println("========== directed graph ==============");
 		for (int i = 0; i < vertices; i++) {
