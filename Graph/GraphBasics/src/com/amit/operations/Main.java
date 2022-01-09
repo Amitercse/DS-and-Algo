@@ -16,5 +16,8 @@ public class Main {
 		GraphTraversal traversal = new GraphTraversal();
 		traversal.traverseBFS(graph);
 		traversal.traverseDFS(graph);
+		GraphOperations op= new GraphOperations();
+		boolean isCyclePresent=op.detectCycle(graph);
+		System.out.println("has cycle: "+ isCyclePresent);
 	}
 }
