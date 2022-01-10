@@ -23,4 +23,13 @@ public class TrieNode {
 	public void unsetAsLeaf() {
 		isEndWord = false;
 	}
+	
+	public boolean hasNoChildren() {
+		for (int i = 0; i < size; i++) {
+			if (children[i] != null) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

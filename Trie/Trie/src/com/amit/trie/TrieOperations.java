@@ -42,4 +42,22 @@ public class TrieOperations {
 		}
 		return node.isLeaf();
 	}
+	
+	public int findTotalWords()
+	{
+		return countWords(root);
+	}
+	
+	private int countWords(TrieNode node) {
+		int count=0;
+		if (node.isEndWord) {
+			count++;
+		}
+		for (int i = 0; i < node.size; i++) {
+			if (node.children[i] != null) {
+				count= count+countWords(node.children[i]);
+			}
+		}
+		return count;
+	}
 }

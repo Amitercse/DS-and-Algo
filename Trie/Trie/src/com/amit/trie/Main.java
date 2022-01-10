@@ -8,5 +8,6 @@ public class Main {
 		op.insertWord("the");
 		System.out.println("word found: "+op.searchWord("the"));
 		System.out.println("word found: "+op.searchWord("there"));
+		System.out.println("total words: "+ op.findTotalWords());
 	}
 }
