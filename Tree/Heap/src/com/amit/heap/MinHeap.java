@@ -61,6 +61,43 @@ public class MinHeap {
 		{
 			System.out.print(minHeap[i]+"\t");
 		}
+		System.out.println();
+	}
+	
+	/**
+	 * Heapify entire heap at once
+	 * @param arr
+	 * @return
+	 */
+	private void heapify(int[] arr, int i, int size) {
+		while (i <= size / 2) {
+			int smallest = i;
+			int left = 2 * i + 1;
+			int right = 2 * i + 2;
+			if (left < arr.length && arr[left] < arr[smallest]) {
+				smallest = left;
+			}
+			if (right < arr.length && arr[right] < arr[smallest]) {
+				smallest = right;
+			}
+			if (smallest != i) {
+				arr[smallest] = arr[i] + arr[smallest];
+				arr[i] = arr[smallest] - arr[i];
+				arr[smallest] = arr[smallest] - arr[i];
+				i = smallest;
+			} else
+				break;
+		}
+	}
+
+	private void heapifyEntireArray(int[] arr) {
+		int i = (arr.length - 1) / 2;
+		for (; i >= 0; i--) {
+			heapify(arr, i, arr.length);
+		}
+		for (int element : arr) {
+			System.out.print(element + "\t");
+		}
 	}
 	
 	public static void main(String[] args) throws Exception {
@@ -72,5 +109,7 @@ public class MinHeap {
 			minHeap.insertElementInMinHeap(elementsArr[i]);
 		}
 		minHeap.printHeap();
+		int[] arr= {4,7,1,10,3,2};
+		minHeap.heapifyEntireArray(arr);
 	}
 }
