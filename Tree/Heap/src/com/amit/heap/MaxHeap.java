@@ -104,4 +104,17 @@ public class MaxHeap {
 			}
 		}
 	}
+	
+	public int findKthLargest(int k) {
+		if (k > heapIndex) {
+			System.out.println("k is greater than the size of heap");
+			return -1;
+		}
+		// if third largest needs to be found then we will delete 2 times and then at
+		// index 0 we can find third lasgest
+		for (int i = 1; i < k; i++) {
+			deleteElement();
+		}
+		return arr[0];
+	}
 }

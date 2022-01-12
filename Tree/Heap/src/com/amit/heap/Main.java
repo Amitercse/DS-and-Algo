@@ -20,5 +20,6 @@ public class Main {
 		maxHeap.printHeap();
 		maxHeap.deleteElement();
 		maxHeap.printHeap();
+		System.out.println("kth largest element: "+maxHeap.findKthLargest(3));
 	}
 }
