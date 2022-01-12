@@ -3,15 +3,14 @@ package com.amit.heap;
 public class MinHeap {
 	
 	private int[] minHeap;
-	private int heapIndex=0;
+	private int heapIndex=-1;
 	
 	/**
 	 * Initialize min heap array with capacity
 	 * @param size
 	 */
-	private void initializeHeap(int size)
-	{
-		minHeap= new int[size];
+	void initializeHeap(int size) {
+		minHeap = new int[size];
 	}
 	
 	/**
@@ -20,22 +19,24 @@ public class MinHeap {
 	 * @return
 	 * @throws Exception
 	 */
-	private int getParentIndex(int elementIndex) throws Exception
-	{
-		if(elementIndex>0)
-		{
-			return (elementIndex-1)/2;
-		}
-		else
-		{
+	private int getParentIndex(int elementIndex) throws Exception {
+		if (elementIndex > 0) {
+			return (elementIndex - 1) / 2;
+		} else {
 			throw new Exception("No parent for root element");
 		}
 	}
 	
-	private void insertElementInMinHeap(int element) throws Exception {
-		minHeap[heapIndex++]= element;
+	void insertElementInMinHeap(int element) throws Exception {
+		if(heapIndex==minHeap.length-1)
+		{
+			System.out.println("heap is full");
+			return;
+		}
+		heapIndex++;
+		minHeap[heapIndex] = element;
 		// Maintain min heap property
-		heapifyUp(heapIndex-1);
+		heapifyUp(heapIndex);
 	}
 	
 	/**
@@ -44,22 +45,45 @@ public class MinHeap {
 	 * @throws Exception
 	 */
 	private void heapifyUp(int elementIndex) throws Exception {
-		int temp=minHeap[elementIndex];
-		
-		while(elementIndex>0 && temp<minHeap[getParentIndex(elementIndex)])
-		{
-			int parentIndex= getParentIndex(elementIndex);
-			minHeap[elementIndex]= minHeap[parentIndex];
-			elementIndex= parentIndex;
+		int temp = minHeap[elementIndex];
+
+		while (elementIndex > 0 && temp < minHeap[getParentIndex(elementIndex)]) {
+			int parentIndex = getParentIndex(elementIndex);
+			minHeap[elementIndex] = minHeap[parentIndex];
+			elementIndex = parentIndex;
 		}
-		minHeap[elementIndex]= temp;
+		minHeap[elementIndex] = temp;
 	}
 	
-	private void printHeap()
-	{
-		for(int i=0; i<minHeap.length; i++)
-		{
-			System.out.print(minHeap[i]+"\t");
+	/**
+	 * Heapify down the root
+	 */
+	private void heapifyDown(int elementIndex, int heapSize) {
+		while (elementIndex <= (heapSize - 1) / 2) {
+			int smallest = elementIndex;
+			int left = 2 * elementIndex + 1;
+			int right = 2 * elementIndex + 2;
+			if (left <= heapSize && minHeap[left] < minHeap[smallest]) {
+				smallest = left;
+			}
+			if (right <= heapSize && minHeap[right] < minHeap[smallest]) {
+				smallest = right;
+			}
+			if (smallest != elementIndex) {
+				minHeap[smallest] = minHeap[smallest] + minHeap[elementIndex];
+				minHeap[elementIndex] = minHeap[smallest] - minHeap[elementIndex];
+				minHeap[smallest] = minHeap[smallest] - minHeap[elementIndex];
+				elementIndex = smallest;
+			} else {
+				break;
+			}
+		}
+	}
+	
+	void printHeap() {
+		System.out.println("=============min heap===============");
+		for (int i = 0; i <= heapIndex; i++) {
+			System.out.print(minHeap[i] + "\t");
 		}
 		System.out.println();
 	}
@@ -74,10 +98,10 @@ public class MinHeap {
 			int smallest = i;
 			int left = 2 * i + 1;
 			int right = 2 * i + 2;
-			if (left < arr.length && arr[left] < arr[smallest]) {
+			if (left < size && arr[left] < arr[smallest]) {
 				smallest = left;
 			}
-			if (right < arr.length && arr[right] < arr[smallest]) {
+			if (right < size && arr[right] < arr[smallest]) {
 				smallest = right;
 			}
 			if (smallest != i) {
@@ -90,7 +114,7 @@ public class MinHeap {
 		}
 	}
 
-	private void heapifyEntireArray(int[] arr) {
+	void heapifyEntireArray(int[] arr) {
 		int i = (arr.length - 1) / 2;
 		for (; i >= 0; i--) {
 			heapify(arr, i, arr.length);
@@ -98,18 +122,13 @@ public class MinHeap {
 		for (int element : arr) {
 			System.out.print(element + "\t");
 		}
+		System.out.println();
 	}
 	
-	public static void main(String[] args) throws Exception {
-		MinHeap minHeap= new MinHeap();
-		int[] elementsArr= {10,4,9,1,7,5,3};
-		minHeap.initializeHeap(elementsArr.length);
-		for(int i=0; i<elementsArr.length; i++)
-		{
-			minHeap.insertElementInMinHeap(elementsArr[i]);
-		}
-		minHeap.printHeap();
-		int[] arr= {4,7,1,10,3,2};
-		minHeap.heapifyEntireArray(arr);
+	void deleteFromHeap() {
+		minHeap[0] = minHeap[heapIndex];
+		heapIndex--;
+		heapifyDown(0, heapIndex);
+		printHeap();
 	}
 }
