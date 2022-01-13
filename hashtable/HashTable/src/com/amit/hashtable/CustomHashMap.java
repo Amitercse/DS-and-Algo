@@ -72,6 +72,18 @@ public class CustomHashMap<K, V> {
 		System.out.println("key not found");
 	}
 	
+	public boolean contains(K key) {
+		int index = (arr.length - 1) & key.hashCode();
+		Node node = arr[index];
+		while (node != null) {
+			if (key.equals(node.key)) {
+				return true;
+			}
+			node = node.next;
+		}
+		return false;
+	}
+	
 	public Set<K> getKeySet() {
 		Set<K> set = new HashSet<>();
 		for (int i = 0; i < arr.length; i++) {

@@ -29,5 +29,7 @@ public class Main {
 		for (String s : keySet1) {
 			System.out.println("key: " + s + ", value: " + map.getElementValue(s));
 		}
+		System.out.println("contains key- abc: " + map.contains("abc"));
+		System.out.println("contains key- 3: " + map.contains("3"));
 	}
 }
