@@ -49,6 +49,29 @@ public class CustomHashMap<K, V> {
 		return null;
 	}
 	
+	public void removeElement(K key) {
+		int index = (arr.length - 1) & key.hashCode();
+		Node<K, V> node = arr[index];
+		if (node == null) {
+			System.out.println("key not found");
+			return;
+		} else if (key.equals(node.key)) {
+			arr[index] = node.next;
+		}
+		Node<K, V> previous = node;
+		node = node.next;
+		while (node != null && !key.equals(node.key)) {
+			previous = node;
+			node = node.next;
+
+		}
+		if (node != null) {
+			previous.next = node.next;
+			return;
+		}
+		System.out.println("key not found");
+	}
+	
 	public Set<K> getKeySet() {
 		Set<K> set = new HashSet<>();
 		for (int i = 0; i < arr.length; i++) {
