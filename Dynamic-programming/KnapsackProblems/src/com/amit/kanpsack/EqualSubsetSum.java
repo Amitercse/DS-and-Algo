@@ -6,9 +6,9 @@ public class EqualSubsetSum {
 		EqualSubsetSum ps = new EqualSubsetSum();
 		int[] num = { 1, 2, 3, 4 };
 		System.out.println(ps.equalSumSubSet(num));
-		num = new int[] { 1, 1, 3, 4, 7};
+		num = new int[] { 1, 1, 3, 4, 7 };
 		System.out.println(ps.equalSumSubSet(num));
-		num = new int[] { 2, 3, 4, 6 };
+		num = new int[] { 2, 3, 4, 7 };
 		System.out.println(ps.equalSumSubSet(num));
 	}
 
@@ -17,7 +17,6 @@ public class EqualSubsetSum {
 		for (int i = 0; i < num.length; i++)
 			sum += num[i];
 
-		// if 'sum' is a an odd number, we can't have two subsets with equal sum
 		if (sum % 2 != 0)
 			return false;
 
