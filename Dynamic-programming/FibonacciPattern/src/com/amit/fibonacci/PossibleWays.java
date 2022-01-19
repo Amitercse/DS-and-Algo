@@ -3,7 +3,7 @@ package com.amit.fibonacci;
 public class PossibleWays {
 
 	public static void main(String[] args) {
-		PossibleWays possibleWays= new PossibleWays();
+		PossibleWays possibleWays = new PossibleWays();
 		System.out.println(possibleWays.possibleWays(4));
 		System.out.println(possibleWays.possibleWays(5));
 	}
