@@ -14,6 +14,9 @@ public class LongestPalindromeSubseq {
 		return recursiveLongestPalindromeSubsequence(dp, s, 0, s.length()-1);
 	}
 
+	/*
+	 * Find longest palindrome subsequence using recursion
+	 */
 	private int recursiveLongestPalindromeSubsequence(String s, int startIndex, int endIndex) {
 		if (startIndex > endIndex)
 			return 0;
@@ -28,6 +31,9 @@ public class LongestPalindromeSubseq {
 		return Math.max(length1, length2);
 	}
 
+	/*
+	 * Find longest palindrome subsequence using dynamic programming memoization
+	 */
 	private int recursiveLongestPalindromeSubsequence(Integer[][] dp, String s, int startIndex, int endIndex) {
 		if (startIndex > endIndex)
 			return 0;
